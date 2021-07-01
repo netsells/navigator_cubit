@@ -26,8 +26,10 @@ class CubitNavigator<T extends NavigatorCubit> extends StatelessWidget {
       child: BlocBuilder<T, List<Page>>(
         builder: (context, state) {
           return WillPopScope(
+            // coverage:ignore-start
             onWillPop: () async =>
                 !await _navigatorKey.currentState!.maybePop(),
+            // coverage:ignore-end
             child: Navigator(
               key: _navigatorKey,
               pages: state,
